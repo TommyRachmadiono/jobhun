@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('templates.masteradmin');
+});
+
+Route::get('dashboard_admin', function () {
+    return view('admin.index');
+});
+
+Route::get('login', function () {
+    return view('login');
 });
