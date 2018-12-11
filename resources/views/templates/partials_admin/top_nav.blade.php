@@ -22,6 +22,9 @@
                 <!-- DOC: Apply "dropdown-dark" class after "dropdown-extended" to change the dropdown styte -->
                 <!-- DOC: Apply "dropdown-hoverable" class after below "dropdown" and remove data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to enable hover dropdown mode -->
                 <!-- DOC: Remove "dropdown-hoverable" and add data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to the below A element with dropdown-toggle class -->
+                
+                @if (Auth::check())
+                    
                 <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <i class="icon-bell"></i>
@@ -312,7 +315,7 @@
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <img alt="" class="img-circle" src="{{ asset('admin/assets/layouts/layout/img/avatar.png') }}" />
-                        <span class="username username-hide-on-mobile"> Nick </span>
+                        <span class="username username-hide-on-mobile"> {{ Auth::user()->name }} </span>
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
@@ -342,7 +345,7 @@
                                 <i class="icon-lock"></i> Lock Screen </a>
                         </li>
                         <li>
-                            <a href="page_user_login_1.html">
+                            <a href="{{ route('logout') }}">
                                 <i class="icon-key"></i> Log Out </a>
                         </li>
                     </ul>
@@ -356,6 +359,16 @@
                     </a>
                 </li>
                 <!-- END QUICK SIDEBAR TOGGLER -->
+                @else 
+
+                <li class="">
+                    <a href="{{ route('loginCek') }}" class="">
+                        Login
+                        <i class="icon-login"></i>
+                    </a>
+                </li>
+
+                @endif
             </ul>
         </div>
         <!-- END TOP NAVIGATION MENU -->
