@@ -18,7 +18,6 @@ class CreatePostTagsTable extends Migration
             // $table->foreign('post_id')->references('id')->on('posts');
             $table->integer('tag_id'); //unsigned
             // $table->foreign('tag_id')->references('id')->on('tags');
-            $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ class CreatePostTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_tags');
+        Schema::dropIfExists('post_tag');
     }
 }
