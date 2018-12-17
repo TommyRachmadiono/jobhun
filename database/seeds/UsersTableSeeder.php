@@ -11,26 +11,26 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-    		DB::table('users')->insert([[
-    			'name' => 'Denies Kresna',
-    			'email' => 'batkorumbawa@gmail.com',
-    			'password' => bcrypt('12345'),
-    			'username' => "Denies Kresna",
-    			'role' => 'administrator',
-    			'photo' => "1.jpg",
-                'created_at' => new Datetime(),
-                'updated_at' => new Datetime()
-    		],
-            [
-                'name' => 'Cynthia Cecilia',
-                'email' => 'cynthcecilia@gmail.com',
-                'password' => bcrypt('12345'),
-                'username' => "Cynthia Cecilia",
-                'role' => 'author',
-                'photo' => "2.jpg",
-                'created_at' => new Datetime(),
-                'udpated_at' => new Datetime()
-            ]]);
-    }
+      DB::table('users')->insert([[
+         'name' => 'Denies Kresna',
+         'email' => 'batkorumbawa@gmail.com',
+         'password' => bcrypt('12345'),
+         'username' => "Denies Kresna",
+         'role' => 'administrator',
+         'photo' => "1.jpg",
+         'created_at' => new Datetime(),
+         'updated_at' => new Datetime()
+     ],
+     [
+        'name' => 'Cynthia Cecilia',
+        'email' => 'cynthcecilia@gmail.com',
+        'password' => bcrypt('12345'),
+        'username' => "Cynthia Cecilia",
+        'role' => 'author',
+        'photo' => "2.jpg",
+        'created_at' => new Datetime(),
+        'udpated_at' => new Datetime()
+    ]]);
+  }
 }
 

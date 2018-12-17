@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Biodata;
 
 class UserController extends Controller
 {
@@ -42,13 +43,21 @@ class UserController extends Controller
         $user->photo = $request->username.'.jpg';
         $user->save();
 
-        // User::create([
-        //     'username' => $request->username,
-        //     'password' => bcrypt($request->password),
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'role' => $request->role,
-        //     'photo' => $request->username.'.jpg',
+        $request->merge(["user_id" => $user->id]);
+        $biodata = Biodata::create($request->all());
+        $biodata->save();
+
+        // $biodata = Biodata::create($request->all());
+        // $biodata->user_id = $user->id;
+        // $biodata->save();
+
+        // Biodata::create([
+        //     'phone' => $request->phone,
+        //     'gender' => $request->gender,
+        //     'website' => $request->website,
+        //     'date_of_birth' => $request->date_of_birth,
+        //     'place_of_birth' => $request->place_of_birth,
+        //     'user_id' => $user->id,
         // ]);
 
         $path = $request->file('photo')->storeAs('images',request('username').'.jpg');

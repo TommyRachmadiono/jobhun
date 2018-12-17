@@ -64,12 +64,62 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="gender" class="control-label">Gender</label>
+                            <select class="form-control" name="gender" id="gender" required="">
+                                <option value="">-- Select Gender --</option>
+                                <option value="Laki-Laki">Laki-Laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="control-label">Phone</label>
+                            <div class="input-group">
+                                <span class="input-group-addon input-circle-left">
+                                    <i class="fa fa-phone"></i>
+                                </span>
+                                <input type="text" class="form-control input-circle-right" id="phone" placeholder="08xxxxx" name="phone" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="website" class="control-label">Website</label>
+                            <div class="input-group">
+                                <span class="input-group-addon input-circle-left">
+                                    <i class="fa fa-internet-explorer"></i>
+                                </span>
+                                <input type="text" class="form-control input-circle-right" id="website" placeholder="www.example.com" name="website">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date_of_birth" class="control-label">Date of Birth</label>
+                            <div class="input-group">
+                                <span class="input-group-addon input-circle-left">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                <input type="date" class="form-control input-circle-right" id="date_of_birth" name="date_of_birth" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="place_of_birth" class="control-label">Place of Birth</label>
+                            <div class="input-group">
+                                <span class="input-group-addon input-circle-left">
+                                    <i class="fa fa-map-pin"></i>
+                                </span>
+                                <input type="text" class="form-control input-circle-right" id="place_of_birth" placeholder="Somewhere on earth" name="place_of_birth" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="photo" class="control-label">Select Photo</label>
                             <input type="file" id="photo" name="photo" class="form-control" required="">
                             <p class="help-block"> Select a photo (<b>max xx MB</b>) </p>
                         </div>
                     </div>
                     <div class="form-actions">
+                        <input type="hidden" name="user_id" value="">
                         <button type="submit" class="btn blue">Submit</button>
                         <button type="button" class="btn default">Cancel</button>
                     </div>

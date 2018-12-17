@@ -15,8 +15,10 @@
                         <tr>
                             <th style="text-align: center;"> Name </th>
                             <th style="text-align: center;"> Username </th>
+                            <th style="text-align: center;"> Gender </th>
                             <th style="text-align: center;"> Role </th>
                             <th style="text-align: center;"> Email </th>
+                            <th style="text-align: center;"> Phone </th>
                             <th style="text-align: center;"> Action </th>
                         </tr>
                     </thead>
@@ -25,8 +27,10 @@
                             <tr>
                                 <td> {{ $user->name }} </td>
                                 <td> {{ $user->username }} </td>
+                                <td> {{ $user->biodata->gender }} </td>
                                 <td> {{ $user->role }} </td>
                                 <td> {{ $user->email }} </td>
+                                <td> {{ $user->biodata->phone }} </td>
                                 
                                 <td style="text-align: center;"> 
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#modal_edit{{ $user->id }}"> 
