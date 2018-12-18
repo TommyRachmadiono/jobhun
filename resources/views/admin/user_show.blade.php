@@ -79,6 +79,15 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="phone" class="control-label">Phone</label>
+                            <div class="input-group">
+                                <span class="input-group-addon input-circle-left">
+                                    <i class="fa fa-phone"></i>
+                                </span>
+                                <input type="text" class="form-control input-circle-right" id="phone" placeholder="08xxxxxxx" name="phone" required="" value="{{ $user->biodata->phone }}" >
+                            </div>
+                        </div>
                         
                         <div class="form-group">
                             <label for="role" class="control-label">Role</label>

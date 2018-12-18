@@ -47,6 +47,7 @@
             </a>
         </li>
 
+        @if (Auth::check())
         <li class="heading">
             <h3 class="uppercase">Features</h3>
         </li>
@@ -139,6 +140,7 @@
             </ul>
         </li>
 
+        @endif
     
         <li class="heading">
             <h3 class="uppercase">Pages</h3>

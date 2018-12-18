@@ -99,6 +99,11 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update($request->all());
 
+        // $biodata = Biodata::where('user_id', '=', $id);
+        // $user->biodata->where('user_id', $id)->update($request->all());
+        $user->biodata->update($request->all());
+        // $user->biodata->update($request->all())->where->('user_id', $id);
+
         return redirect()->route('user_show');
     }
 
