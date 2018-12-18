@@ -104,13 +104,13 @@
             </a>
             <ul class="sub-menu">
                 <li class="nav-item  ">
-                    <a href="#" class="nav-link ">
+                    <a href="{{ route('post_show') }}" class="nav-link ">
                         <i class="fa fa-sticky-note"></i>
                         <span class="title">All Post</span>
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a href="#" class="nav-link ">
+                    <a href="{{ route('post_add') }}" class="nav-link ">
                         <i class="fa fa-pencil-square"></i>
                         <span class="title">Add Post</span>
                     </a>

@@ -47,4 +47,11 @@ Route::group(['middleware' => ['ceklogin']], function () {
     Route::post('/add_tag', 'TagController@store')->name('tag.store');
     Route::post('/tag_update/{id}', 'TagController@update')->name('tag.update');
     //============================================= tag =============================================//
+
+    //============================================= post =============================================//
+    Route::get('post_show', 'PostController@index')->name('post_show');
+    Route::get('post_add', function() {
+        return view('admin.post_add');
+    })->name('post_add');
+    //============================================= post =============================================//
 });
