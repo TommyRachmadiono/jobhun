@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Tags;
+use App\Tag;
 
 class TagController extends Controller
 {
@@ -15,7 +15,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tags::all();
+        $tags = Tag::all();
         return view('admin.tag_show', ['tags'=>$tags]);
     }
 
@@ -37,7 +37,7 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $tag = Tags::create($request->all());
+        $tag = Tag::create($request->all());
         $tag->save();
 
         return redirect()->route('tag_show');
@@ -74,7 +74,7 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tag = Tags::findOrFail($id);
+        $tag = Tag::findOrFail($id);
         $tag->update($request->all());
 
         return redirect()->route('tag_show');
@@ -88,7 +88,7 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        $tag = Tags::findOrFail($id);
+        $tag = Tag::findOrFail($id);
         $tag->delete();
 
         return redirect()->route('tag_show');

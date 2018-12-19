@@ -50,8 +50,8 @@ Route::group(['middleware' => ['ceklogin']], function () {
 
     //============================================= post =============================================//
     Route::get('post_show', 'PostController@index')->name('post_show');
-    Route::get('post_add', function() {
-        return view('admin.post_add');
-    })->name('post_add');
+    Route::get('post_add', 'PostController@create')->name('post_add');
+    Route::get('post_edit/{id}', 'PostController@edit')->name('post_edit');
+    Route::post('/add_post', 'PostController@store')->name('post.store');
     //============================================= post =============================================//
 });

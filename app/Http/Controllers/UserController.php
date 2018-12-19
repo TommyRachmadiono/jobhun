@@ -45,7 +45,7 @@ class UserController extends Controller
 
         $request->merge(["user_id" => $user->id]);
         $biodata = Biodata::create($request->all());
-        $biodata->save();
+        
 
         // $biodata = Biodata::create($request->all());
         // $biodata->user_id = $user->id;
@@ -60,7 +60,7 @@ class UserController extends Controller
         //     'user_id' => $user->id,
         // ]);
 
-        $path = $request->file('photo')->storeAs('images',request('username').'.jpg');
+        $path = $request->file('photo')->storeAs('images/users',request('username').'.jpg');
 
         return redirect()->route('user_show');
     }
@@ -102,7 +102,6 @@ class UserController extends Controller
         // $biodata = Biodata::where('user_id', '=', $id);
         // $user->biodata->where('user_id', $id)->update($request->all());
         $user->biodata->update($request->all());
-        // $user->biodata->update($request->all())->where->('user_id', $id);
 
         return redirect()->route('user_show');
     }

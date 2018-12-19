@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -15,7 +17,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('admin.post_show', ['posts'=>$posts]);
+        return view('admin.post_show', ['posts' => $posts]);
     }
 
     /**
@@ -25,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $tags = Tag::all();
+        return view('admin.post_add', ['type' => 'Add', 'tags' => $tags]);
     }
 
     /**
@@ -36,7 +39,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->merge(["author_id" => Auth::User()->id]);
+        $post = Post::create($request->all());
+
+        $post->featured_image = $post->id.'.jpg';
+        $post->save();
+        $request->file('featured_image')->move(public_path("/images/post/"), $post->id.'.jpg');
+        // $path = $request->file('featured_image')->storeAs('images/post/'. $post->id.'.jpg');
+
+        $post->tags()->sync($request->tags);
+
+        return redirect()->route('post_show');
     }
 
     /**
@@ -58,7 +72,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $tags = Tag::all();
+        return view('admin.post_add', ['type' => 'Edit', 'post' => $post, 'tags' => $tags]);
     }
 
     /**
