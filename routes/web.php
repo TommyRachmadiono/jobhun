@@ -53,5 +53,6 @@ Route::group(['middleware' => ['ceklogin']], function () {
     Route::get('post_add', 'PostController@create')->name('post_add');
     Route::get('post_edit/{id}', 'PostController@edit')->name('post_edit');
     Route::post('/add_post', 'PostController@store')->name('post.store');
+    Route::patch('edit_post/{id}', 'PostController@update')->name('post.edit');
     //============================================= post =============================================//
 });

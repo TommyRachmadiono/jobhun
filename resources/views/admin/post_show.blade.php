@@ -23,9 +23,9 @@
 
                                 <td style="text-align: center;"> 
                                     <a href="{{ route('post_edit', $post->id) }}">
-                                        <button class="btn btn-primary"> 
+                                        <a href="{{ route('post_edit',$post->id) }}"><button class="btn btn-primary"> 
                                             <i class="fa fa-pencil"></i>
-                                        </button>
+                                        </button></a>
                                     </a>
                                     <form style="display: inline-block;" action="{{-- {{ route('tag.delete', $tag->id) }} --}}" method="POST"> 
                                         {{ csrf_field() }}

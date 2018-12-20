@@ -11,8 +11,11 @@
                 </div>
             </div>
             <div class="portlet-body form">
-                <form role="form" action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+                <form role="form" action="@if($type == 'Edit') {{route('post.edit',$post->id)}} @else {{route('post.store') }} @endif" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
+                    @isset($post) 
+                            <input name="_method" type="hidden" value="PATCH">
+                    @endisset
                     <div class="form-body">
                         <div class="form-group">
                             <label for="title" class="control-label">Title</label>
@@ -25,18 +28,19 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="multiple" class="control-label">Select2 multi select</label>
-                            <select name="tags" id="multiple" class="form-control select2-multiple" multiple>
+                            <label for="multiple" class="control-label">Select Tags</label>
+                            <select name="tags[]" id="multiple" class="form-control select2-multiple" multiple>
                                 @foreach($tags as $tag)
-                                <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+                                <option value="{{ $tag->id }}" @isset($post) @if(in_array($tag->id,$post->tags->pluck('id')->all())) selected @endif  @endisset>{{ $tag->tag }}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="featured_image" class="control-label">Featured Image</label>
+                            <br />
                             @isset($post)
-                            <img src="{{ asset('images/post/'.$post->featured_image) }}">
+                            <img width="200" src="{{ asset('images/post/'.$post->featured_image) }}">
                             @endisset
                             <div class="input-group">
                                 <span class="input-group-addon input-circle-left">
@@ -45,12 +49,18 @@
                                 <input type="file" class="form-control input-circle-right" id="featured_image" name="featured_image" required="">
                             </div>
                         </div>
-
+                        {{--
                         <div class="form-group">
                             <label for="content">Content</label>
-                            <textarea name="content" class="form-control" rows="3" style="resize: none;"></textarea>
+                            <textarea name="content" class="form-control" rows="3" style="resize: none;">@isset($post) {!! $post->content !!} @endisset</textarea>
                         </div>
-
+                        --}}
+                        <div class="form-group">
+                            <label for="content">Content</label>
+                            <div class="col-md-12">
+                                 <textarea name="content" id="summernote_1">@isset($post) {!! $post->content !!} @endisset</textarea>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn blue">Submit</button>

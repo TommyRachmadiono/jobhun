@@ -61,6 +61,8 @@
 {{-- <script src="{{ asset('admin/assets/pages/scripts/table-datatables-buttons.min.js') }}" type="text/javascript"></script> --}}
 <!-- END PAGE LEVEL SCRIPTS -->
 
+<!-- WYSIWYG -->{{--<script src="{{ asset('admin/assets/global/plugins/bootstrap-summernote/summernote.min.js') }}" type="text/javascript"></script>--}}
+
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
 <script src="{{ asset('admin/assets/layouts/layout/scripts/layout.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admin/assets/layouts/layout/scripts/demo.min.js') }}" type="text/javascript"></script>

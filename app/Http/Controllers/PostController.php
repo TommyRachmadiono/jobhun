@@ -46,10 +46,8 @@ class PostController extends Controller
         $post->featured_image = $post->id.'.jpg';
         $post->save();
         $request->file('featured_image')->move(public_path("/images/post/"), $post->id.'.jpg');
-        // $path = $request->file('featured_image')->storeAs('images/post/'. $post->id.'.jpg');
 
-        $post->tags()->sync($request->tags);
-
+        $post->tags()->attach($request->tags);
         return redirect()->route('post_show');
     }
 
@@ -76,6 +74,14 @@ class PostController extends Controller
         $tags = Tag::all();
         return view('admin.post_add', ['type' => 'Edit', 'post' => $post, 'tags' => $tags]);
     }
+/*
+    9       1 books
+    9       2 travel
+
+    $post->tags
+
+    [[id=>1,tag=>books],[id=>2,tag=>travel]]
+*/
 
     /**
      * Update the specified resource in storage.
@@ -87,6 +93,18 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->merge(["author_id" => Auth::User()->id]);
+        $post = Post::findOrFail($id);
+
+        $post->update($request->all());
+        $post->featured_image = $post->id.'.jpg';
+        $post->save();
+
+        $request->file('featured_image')->move(public_path("/images/post/"), $post->id.'.jpg');
+
+        $post->tags()->sync($request->tags);
+        //return view('test',['req'=>$request->tags]);
+        return redirect()->route('post_show');
     }
 
     /**

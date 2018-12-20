@@ -10,7 +10,7 @@ class Post extends Model
         'title', 'content', 'author_id', 'featured_image',
     ];
 
-    public function tag()
+    public function tags()
     {
         return $this->belongsToMany('App\Tag');
     }
