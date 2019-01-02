@@ -26,8 +26,8 @@
     <link href="{{ asset('admin/assets/global/plugins/select2/css/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
 
-    <!-- WYSIWYG -->
-    <link href="{{asset('admin/assets/global/plugins/bootstrap-summernote/summernote.css') }}" rel="stylesheet" type="text/css" />
+    <!-- WYSIWYG -->{{--
+    <link href="{{asset('admin/assets/global/plugins/bootstrap-summernote/summernote.css') }}" rel="stylesheet" type="text/css" />--}}
 
 
     <!-- BEGIN THEME GLOBAL STYLES -->

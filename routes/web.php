@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('login');
-})->name('welcome');
+})->name('login');
 
 Route::post('/login', 'LoginController@CekLogin')->name('loginCek');
 Route::get('/logout', 'LoginController@Logout')->name('logout');

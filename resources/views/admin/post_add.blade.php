@@ -49,16 +49,10 @@
                                 <input type="file" class="form-control input-circle-right" id="featured_image" name="featured_image" required="">
                             </div>
                         </div>
-                        {{--
-                        <div class="form-group">
-                            <label for="content">Content</label>
-                            <textarea name="content" class="form-control" rows="3" style="resize: none;">@isset($post) {!! $post->content !!} @endisset</textarea>
-                        </div>
-                        --}}
                         <div class="form-group">
                             <label for="content">Content</label>
                             <div class="col-md-12">
-                                 <textarea name="content" id="summernote_1">@isset($post) {!! $post->content !!} @endisset</textarea>
+                                 <textarea name="content">@isset($post) {!! $post->content !!} @endisset</textarea>
                             </div>
                         </div>
                     </div>
@@ -78,6 +72,12 @@
 @section('custom_js')
 <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript">
-    CKEDITOR.replace( 'content' );
+    var options = {
+        filebrowserImageBrowseUrl: '/jobhun/public/laravel-filemanager?type=Images',
+        filebrowserImageUploadUrl: '/jobhun/public/laravel-filemanager/upload?type=Images&_token=',
+        filebrowserBrowseUrl: '/jobhun/public/laravel-filemanager?type=Files',
+        filebrowserUploadUrl: '/jobhun/public/laravel-filemanager/upload?type="Files&_token='
+    };
+    CKEDITOR.replace( 'content', options);
 </script>
 @endsection
