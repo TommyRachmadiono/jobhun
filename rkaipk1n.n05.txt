@@ -1,0 +1,29 @@
+﻿Merge remote-tracking branch 'origin/development' into development
+
+# Conflicts:
+#	public/images/post/6.jpg
+#	public/images/post/7.jpg
+#	public/images/post/8.jpg
+#	public/images/post/9.jpg
+#	resources/views/admin/post_add.blade.php
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch development
+# Your branch and 'origin/development' have diverged,
+# and have 2 and 1 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes not staged for commit:
+#	modified:   resources/views/templates/partials_admin/head.blade.php
+#
+

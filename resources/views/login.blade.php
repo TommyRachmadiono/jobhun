@@ -53,7 +53,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- BEGIN LOGO -->
         <div class="logo">
             <a href=" {{ url('/') }}">
-                <img src="{{ asset('admin/assets/pages/img/logo-big.png') }}" alt="" /> </a>
+                <img src="{{ asset('logo.png') }}" height="100" alt="" /> </a>
         </div>
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
@@ -61,22 +61,22 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN LOGIN FORM -->
             <form class="login-form" action="{{ route('loginCek') }}" method="post">
                 {{ csrf_field() }}
-                <h3 class="form-title font-green">Sign In</h3>
+                <h3 class="form-title font-green">Masuk</h3>
                 <div class="alert alert-danger display-hide">
                     <button class="close" data-close="alert"></button>
-                    <span> Enter any username and password. </span>
+                    <span> Masukkan email / kata kunci. </span>
                 </div>
                 <div class="form-group">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-                    <label class="control-label visible-ie8 visible-ie9">Username</label>
-                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="email" /> </div>
+                    <label class="control-label visible-ie8 visible-ie9">Email / Nama Pengguna</label>
+                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Email / Nama Pengguna" name="email" /> </div>
                 <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Password</label>
-                    <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" /> </div>
+                    <label class="control-label visible-ie8 visible-ie9">Kata Kunci</label>
+                    <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Kata Kunci" name="password" /> </div>
                 <div class="form-actions">
-                    <button type="submit" class="btn green uppercase">Login</button>
-                    <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
-                </div>
+                    <button type="submit" class="btn green uppercase">Masuk</button>
+                    <a href="javascript:;" id="forget-password" class="forget-password">Lupa Kata Kunci?</a>
+                </div><!--
                 <div class="login-options">
                     <h4>Or login with</h4>
                     <ul class="social-icons">
@@ -98,11 +98,11 @@ License: You must have a valid license purchased only from themeforest(the above
                     <p>
                         <a href="javascript:;" id="register-btn" class="uppercase">Create an account</a>
                     </p>
-                </div>
+                </div>-->
             </form>
             <!-- END LOGIN FORM -->
 
-            <!-- BEGIN FORGOT PASSWORD FORM -->
+            <!-- BEGIN FORGOT PASSWORD FORM -->{{--
             <form class="forget-form" action="index.html" method="post">
                 <h3 class="font-green">Forget Password ?</h3>
                 <p> Enter your e-mail address below to reset your password. </p>
@@ -112,9 +112,9 @@ License: You must have a valid license purchased only from themeforest(the above
                     <button type="button" id="back-btn" class="btn green btn-outline">Back</button>
                     <button type="submit" class="btn btn-success uppercase pull-right">Submit</button>
                 </div>
-            </form>
+            </form>--}}
             <!-- END FORGOT PASSWORD FORM -->
-            <!-- BEGIN REGISTRATION FORM -->
+            <!-- BEGIN REGISTRATION FORM -->{{--
             <form class="register-form" action="index.html" method="post">
                 <h3 class="font-green">Sign Up</h3>
                 <p class="hint"> Enter your personal details below: </p>
@@ -394,10 +394,10 @@ License: You must have a valid license purchased only from themeforest(the above
                     <button type="button" id="register-back-btn" class="btn green btn-outline">Back</button>
                     <button type="submit" id="register-submit-btn" class="btn btn-success uppercase pull-right">Submit</button>
                 </div>
-            </form>
+            </form>--}}
             <!-- END REGISTRATION FORM -->
         </div>
-        <div class="copyright"> 2014 © Metronic. Admin Dashboard Template. </div>
+        <div class="copyright"> 2019 © Jobhun Indonesia. </div>
         <!--[if lt IE 9]>
 <script src="../assets/global/plugins/respond.min.js"></script>
 <script src="../assets/global/plugins/excanvas.min.js"></script> 
