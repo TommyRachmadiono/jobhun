@@ -68,21 +68,12 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <div class="form-group">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-<<<<<<< HEAD
-                    <label class="control-label visible-ie8 visible-ie9">Username</label>
-                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="email" required=""> 
-                </div>
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Password</label>
-                    <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" /> 
-                </div>
-=======
+
                     <label class="control-label visible-ie8 visible-ie9">Email / Nama Pengguna</label>
                     <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Email / Nama Pengguna" name="email" /> </div>
                 <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">Kata Kunci</label>
                     <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Kata Kunci" name="password" /> </div>
->>>>>>> 327c6c39c81ec0fc760c69ab4d929862059b0133
                 <div class="form-actions">
                     <button type="submit" class="btn green uppercase">Masuk</button>
                     <a href="javascript:;" id="forget-password" class="forget-password">Lupa Kata Kunci?</a>
