@@ -1,2 +1,7 @@
-@php print_r($req) 
-@endphp
+@extends('templates.masteradmin');
+
+@section('content')
+<tabeluser>
+    
+</tabeluser>
+@endsection

@@ -18,6 +18,13 @@ class LoginController extends Controller
         if (Auth::attempt($data)) {
             // if (Auth::User()->role == 'admin')
             return redirect()->route('home');
+        } else {
+            $data = [
+                'username' => $request->email, 
+                'password' => $request->password,
+            ];
+            if (Auth::attempt($data))
+                return redirect()->route('home');
         }
         return redirect()->back();
     }

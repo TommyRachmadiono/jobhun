@@ -4,6 +4,8 @@
 <script src="../assets/global/plugins/ie8.fix.min.js"></script> 
 <![endif]-->
 
+<script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+
 <!-- BEGIN CORE PLUGINS -->
 <script src="{{ asset('admin/assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admin/assets/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>

@@ -119,4 +119,11 @@ class UserController extends Controller
 
         return redirect()->route('user_show');
     }
+
+    public function jsondata()
+    {
+        $user = User::all();
+
+        return response()->json(['users' => $user]);
+    }
 }
