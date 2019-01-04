@@ -120,6 +120,28 @@ class UserController extends Controller
         return redirect()->route('user_show');
     }
 
+    public function getProfile($id)
+    {   
+        if(Auth::user()->id == $id)
+        {
+            $user = User::findOrFail($id);
+            return view('admin.user_profile')->with(['user' => $user]);
+        } 
+        return back();
+    }
+
+    public function updateProfile(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+        // $biodata = Biodata::where('user_id', '=', $id);
+        // $user->biodata->where('user_id', $id)->update($request->all());
+        $user->biodata->update($request->all());
+
+        return view('user/profile/$id');
+    }
+
     public function jsondata()
     {
         $user = User::all();

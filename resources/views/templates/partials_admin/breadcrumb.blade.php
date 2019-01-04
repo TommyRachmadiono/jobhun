@@ -1,6 +1,6 @@
 <!-- BEGIN PAGE HEADER-->
 <!-- BEGIN PAGE BAR -->
-<div class="page-bar">
+<div class="page-bar" style="margin-bottom: 2%;">
     <ul class="page-breadcrumb">
         <li>
             <a href="index.html">Home</a>
@@ -20,8 +20,8 @@
 </div>
 <!-- END PAGE BAR -->
 <!-- BEGIN PAGE TITLE-->
-<h1 class="page-title"> Admin Dashboard
+{{-- <h1 class="page-title"> Admin Dashboard
     <small>statistics, charts, recent events and reports</small>
-</h1>
+</h1> --}}
 <!-- END PAGE TITLE-->
 <!-- END PAGE HEADER-->

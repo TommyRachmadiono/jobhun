@@ -51,7 +51,7 @@
         <li class="heading">
             <h3 class="uppercase">Fitur</h3>
         </li>
-        <li class="nav-item @if ($seg1 == 'user') active open @endif">
+        <li class="nav-item @if ($seg1 == 'user' && $seg2 != 'profile') active open @endif">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="icon-user"></i>
                 <span class="title">Pengguna</span>
@@ -61,13 +61,13 @@
                 <li class="nav-item @if ($seg2 == 'show' && $seg1 == 'user') active @endif ">
                     <a href="{{ route('user_show') }}" class="nav-link ">
                         <i class="fa fa-users"></i>
-                        <span class="title">Semua User</span>
+                        <span class="title">Semua Pengguna</span>
                     </a>
                 </li>
                 <li class="nav-item  @if ($seg2 == 'add' && $seg1 == 'user') active @endif ">
                     <a href="{{ route('user_add') }}" class="nav-link ">
                         <i class="fa fa-user-plus"></i>
-                        <span class="title">Tambah User Baru</span>
+                        <span class="title">Tambah Pengguna Baru</span>
                     </a>
                 </li>
                 

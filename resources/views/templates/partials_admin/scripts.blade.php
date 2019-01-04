@@ -7,8 +7,8 @@
 <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 
 <!-- BEGIN CORE PLUGINS -->
-<script src="{{ asset('admin/assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/assets/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+{{-- <script src="{{ asset('admin/assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/assets/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script> --}}
 <script src="{{ asset('admin/assets/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admin/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admin/assets/global/plugins/jquery.blockui.min.js') }}" type="text/javascript"></script>
@@ -50,11 +50,12 @@
 <script src="{{ asset('admin/assets/global/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admin/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admin/assets/global/plugins/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js') }}" type="text/javascript"></script>
+{{-- <script src="{{ asset('admin/assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js') }}" type="text/javascript"></script> --}}
 <script src="{{ asset('admin/assets/global/plugins/bootstrap-markdown/lib/markdown.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admin/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admin/assets/global/plugins/bootstrap-summernote/summernote.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
@@ -67,6 +68,7 @@
 <script src="{{ asset('admin/assets/pages/scripts/components-select2.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admin/assets/pages/scripts/components-editors.min.js') }}" type="text/javascript"></script>
 {{-- <script src="{{ asset('admin/assets/pages/scripts/table-datatables-buttons.min.js') }}" type="text/javascript"></script> --}}
+<script src="{{ asset('admin/assets/pages/scripts/profile.min.js') }}" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 
 <!-- WYSIWYG -->{{--<script src="{{ asset('admin/assets/global/plugins/bootstrap-summernote/summernote.min.js') }}" type="text/javascript"></script>--}}
