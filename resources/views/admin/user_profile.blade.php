@@ -2,8 +2,15 @@
 
 @section('content')
 
+@if(session('message'))
+<div class="alert alert-success">
+    {{ session('message') }}
+</div>    
+@endif
+
+
 <div class="page-container-bg-solid page-content-white">
-    <h1 class="page-title"><b> Profil Pengguna</b>
+    <h1 class="page-title"><b> Profil Pengguna</b> 
     </h1>
 
     <div class="row">
@@ -110,7 +117,7 @@
                                 <div class="tab-content">
                                     <!-- PERSONAL INFO TAB -->
                                     <div class="tab-pane active" id="tab_1_1">
-                                        <form role="form" action="{{ route('user.update', $user->id) }}">
+                                        <form role="form" action="{{ route('profile.update', $user->id) }}" method="POST">
                                             {{ csrf_field() }}
                                             <input name="_method" type="hidden" value="PATCH">
                                             <div class="form-group">
@@ -159,8 +166,8 @@
                                                 <input type="text" placeholder="http://www.mywebsite.com" class="form-control" value="{{ $user->biodata->website }}" name="website" />
                                             </div>
                                             <div class="margiv-top-10">
-                                                <a href="javascript:;" class="btn green"> Simpan </a>
-                                                <a href="javascript:;" class="btn default"> Batal </a>
+                                                <input type="submit" value="Simpan" class="btn green"> 
+                                                <input type="reset" value="Batal" class="btn default">
                                             </div>
                                         </form>
                                     </div>

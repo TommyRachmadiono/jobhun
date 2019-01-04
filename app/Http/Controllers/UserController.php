@@ -135,11 +135,9 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update($request->all());
 
-        // $biodata = Biodata::where('user_id', '=', $id);
-        // $user->biodata->where('user_id', $id)->update($request->all());
         $user->biodata->update($request->all());
 
-        return view('user/profile/$id');
+        return redirect()->route('user_profile', $id)->with('message', 'Berhasil Mengubah Data');
     }
 
     public function jsondata()
