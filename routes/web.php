@@ -44,6 +44,7 @@ Route::group(['middleware' => ['ceklogin']], function () {
     Route::post('/user_update/{id}', 'UserController@update')->name('user.update');
     Route::get('user/profile/{id}', 'UserController@getProfile')->name('user_profile');
     Route::patch('/profile_update/{id}', 'UserController@updateProfile')->name('profile.update');
+    Route::patch('/photo_update/{id}', 'UserController@changePhoto')->name('photo.update');
     //============================================= user =============================================//
 
     //============================================= tag =============================================//

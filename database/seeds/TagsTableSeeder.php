@@ -11,10 +11,15 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-    	for($i = 0; $i < 10; $i++) {
-    		DB::table('tags')->insert([
-    			'tag' => str_random(10)
-    		]);
-    	}
+    	DB::table('tags')->insert([[
+         'tag' => 'Coba',
+         'created_at' => new Datetime(),
+         'updated_at' => new Datetime()
+     ],
+     [
+        'tag' => 'Hewan',
+        'created_at' => new Datetime(),
+        'udpated_at' => new Datetime()
+    ]]);
     }
 }

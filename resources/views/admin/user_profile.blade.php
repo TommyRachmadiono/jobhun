@@ -21,7 +21,7 @@
                 <div class="portlet light profile-sidebar-portlet ">
                     <!-- SIDEBAR USERPIC -->
                     <div class="profile-userpic">
-                        <img src="{{ asset('admin/assets/pages/media/profile/avatar.png') }}" class="img-responsive" alt=""> </div>
+                        <img src="{{ asset('images/users/'.$user->photo) }}" class="img-responsive" alt=""> </div>
                     <!-- END SIDEBAR USERPIC -->
                     <!-- SIDEBAR USER TITLE -->
                     <div class="profile-usertitle">
@@ -176,7 +176,9 @@
                                     <div class="tab-pane" id="tab_1_2">
                                         <p> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
                                             eiusmod. </p>
-                                        <form action="#" role="form">
+                                        <form action="{{ route('photo.update', $user->id) }}" role="form" method="POST" enctype="multipart/form-data">
+                                            {{ csrf_field() }}
+                                            <input name="_method" type="hidden" value="PATCH">
                                             <div class="form-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
@@ -186,7 +188,7 @@
                                                         <span class="btn default btn-file">
                                                             <span class="fileinput-new"> Pilih Gambar </span>
                                                             <span class="fileinput-exists"> Ubah </span>
-                                                            <input type="file" name="photo"> </span>
+                                                            <input type="file" name="photo" id="photo"> </span>
                                                         <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> Hapus </a>
                                                     </div>
                                                 </div>
@@ -196,8 +198,8 @@
                                                 </div>
                                             </div>
                                             <div class="margin-top-10">
-                                                <a href="javascript:;" class="btn green"> Ubah </a>
-                                                <a href="javascript:;" class="btn default"> Batal </a>
+                                                <button type="submit" value="Ubah" class="btn green"> Ubah Foto </button>
+                                                <button type="reset" value="Batal" class="btn default"> Batal </button>
                                             </div>
                                         </form>
                                     </div>
@@ -215,8 +217,8 @@
                                                 <label class="control-label">Ketik Ulang Kata Sandi Baru</label>
                                                 <input type="password" class="form-control" name="konfirmasi_password" /> </div>
                                             <div class="margin-top-10">
-                                                <a href="javascript:;" class="btn green"> Ubah Password </a>
-                                                <a href="javascript:;" class="btn default"> Batal </a>
+                                                <button type="submit" class="btn green"> Ubah Kata Sandi </button>
+                                                <button type="reset" class="btn default"> Batal </button>
                                             </div>
                                         </form>
                                     </div>
