@@ -15,12 +15,9 @@ Route::get('/', function () {
     return view('templates.masteradmin');
 });
 
-
-
 Route::get('/login', function () {
     return view('login');
 })->name('login');
-
 Route::post('/login', 'LoginController@CekLogin')->name('loginCek');
 Route::get('/logout', 'LoginController@Logout')->name('logout');
 
@@ -31,9 +28,7 @@ Route::get('profile', function() {
     return view('admin.user_profile');
 });
 Route::group(['middleware' => ['ceklogin']], function () {
-    Route::get('/dashboard_admin', function () {
-        return view('admin.index');
-    })->name('home');
+    Route::get('/dashboard_admin', 'UserController@countUser')->name('home');
     //============================================= user =============================================//
     Route::get('user/show', 'UserController@index')->name('user_show');
     Route::get('user/add', function() {
@@ -45,6 +40,7 @@ Route::group(['middleware' => ['ceklogin']], function () {
     Route::get('user/profile/{id}', 'UserController@getProfile')->name('user_profile');
     Route::patch('/profile_update/{id}', 'UserController@updateProfile')->name('profile.update');
     Route::patch('/photo_update/{id}', 'UserController@changePhoto')->name('photo.update');
+    Route::patch('/password_update/{id}', 'UserController@changePassword')->name('password.update');
     //============================================= user =============================================//
 
     //============================================= tag =============================================//

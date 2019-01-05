@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Biodata;
 
@@ -135,7 +136,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update($request->all());
 
-        $user->photo = $user->usernaem.'.jpg';
+        $user->photo = $user->username.'.jpg';
         $user->save();
 
         $request->file('featured_image')->move(public_path("/images/users/"), $post->username.'.jpg');
@@ -146,13 +147,41 @@ class UserController extends Controller
     public function changePhoto(Request $request, $id)
     {
         $user = User::findOrFail($id);
-           
+
         $user->photo = $user->username.'.jpg';
         $user->save();
 
         $request->file('photo')->move(public_path("/images/users/"), $user->username.'.jpg');
 
         return redirect()->route('user_profile', $id)->with('message', 'Berhasil Mengubah Foto Profil');
+    }
+
+    public function changePassword(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $password_lama = $request->password_lama;
+        $password_baru = $request->password_baru;
+        $konfirmasi_password = $request->konfirmasi_password;
+
+        if(Hash::check($password_lama, $user->password))
+        {
+            if($password_baru == $konfirmasi_password) 
+            {
+                $user->password = bcrypt($password_baru);
+                $user->save();
+                return redirect()->route('user_profile', $id)->with('message', 'Berhasil Mengubah Kata Sandi');
+            }
+            return back()->with('message', 'Kata Sandi Baru Dengan Konfirmasi Kata Sandi Baru Tidak Sama');
+        }
+        return back()->with('message', 'Kata Sandi Sekarang Salah');
+    }
+
+    public function countUser()
+    {
+        $users = User::all();
+        $total_users = count($users);
+        return view('admin.index')->with(['total_users' => $total_users]);
     }
 
     public function jsondata()
