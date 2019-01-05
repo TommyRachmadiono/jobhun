@@ -100,13 +100,13 @@
                                 </div>
                                 <ul class="nav nav-tabs">
                                     <li class="active">
-                                        <a href="#tab_1_1" data-toggle="tab">Info Biodata</a>
+                                        <a href="#tab_1_1" data-toggle="tab">Informasi Biodata</a>
                                     </li>
                                     <li>
                                         <a href="#tab_1_2" data-toggle="tab">Ganti Foto Profil</a>
                                     </li>
                                     <li>
-                                        <a href="#tab_1_3" data-toggle="tab">Ubah Password</a>
+                                        <a href="#tab_1_3" data-toggle="tab">Ubah Kata Sandi</a>
                                     </li>
                                     <li>
                                         <a href="#tab_1_4" data-toggle="tab">Privacy Settings</a>
@@ -206,16 +206,21 @@
                                     <!-- END CHANGE AVATAR TAB -->
                                     <!-- CHANGE PASSWORD TAB -->
                                     <div class="tab-pane" id="tab_1_3">
-                                        <form action="#">
+                                        <form action="{{ route('password.update', $user->id) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="_method" value="PATCH">
                                             <div class="form-group">
                                                 <label class="control-label">Kata Sandi Sekarang</label>
-                                                <input type="password" class="form-control" name="password" /> </div>
+                                                <input type="password" class="form-control" name="password_lama" required="" /> 
+                                            </div>
                                             <div class="form-group">
                                                 <label class="control-label">Kata Sandi Baru</label>
-                                                <input type="password" class="form-control" name="password_baru" /> </div>
+                                                <input type="password" class="form-control" name="password_baru" required="" /> 
+                                            </div>
                                             <div class="form-group">
                                                 <label class="control-label">Ketik Ulang Kata Sandi Baru</label>
-                                                <input type="password" class="form-control" name="konfirmasi_password" /> </div>
+                                                <input type="password" class="form-control" name="konfirmasi_password" required="" /> 
+                                            </div>
                                             <div class="margin-top-10">
                                                 <button type="submit" class="btn green"> Ubah Kata Sandi </button>
                                                 <button type="reset" class="btn default"> Batal </button>
