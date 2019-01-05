@@ -22,6 +22,7 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 const app = new Vue({
     el: '#app',
     mounted(){
+    		localStorage.setItem('appUrl','http://localhost/jobhun/public/');
 			    $('.dropdown-toggle').dropdown('toggle');
     }
 });
