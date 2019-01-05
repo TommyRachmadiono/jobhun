@@ -1103,8 +1103,8 @@ Vue.component('pagination', __webpack_require__(44));
 var app = new Vue({
   el: '#app',
   mounted: function mounted() {
+    localStorage.setItem('appUrl', 'http://localhost/jobhun/public/');
     $('.dropdown-toggle').dropdown('toggle');
-    localStorage.setItem("appUrl", "http://localhost/jobhun/public/");
   }
 });
 

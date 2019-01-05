@@ -184,9 +184,14 @@ class UserController extends Controller
         return view('admin.index')->with(['total_users' => $total_users]);
     }
 
-    public function jsondata()
+    public function jsondata(Request $request)
     {
-        $user = User::paginate(10);
+        if($request->input('search') == ''){
+            $user = User::paginate(1);
+        }
+        else{
+            $user = User::namaMengandung($request->input('search'))->paginate(1);
+        }        
 
         return response()->json(['users' => $user]);
     }
