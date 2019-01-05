@@ -122,7 +122,7 @@ class UserController extends Controller
 
     public function jsondata()
     {
-        $user = User::all();
+        $user = User::paginate(10);
 
         return response()->json(['users' => $user]);
     }

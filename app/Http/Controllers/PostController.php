@@ -74,14 +74,6 @@ class PostController extends Controller
         $tags = Tag::all();
         return view('admin.post_add', ['type' => 'Edit', 'post' => $post, 'tags' => $tags]);
     }
-/*
-    9       1 books
-    9       2 travel
-
-    $post->tags
-
-    [[id=>1,tag=>books],[id=>2,tag=>travel]]
-*/
 
     /**
      * Update the specified resource in storage.

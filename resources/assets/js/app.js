@@ -16,8 +16,12 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
-Vue.component('tabeluser', require('./components/user/Tabel.vue'));
+Vue.component('adminuser', require('./components/admin/User.vue'));
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    mounted(){
+			    $('.dropdown-toggle').dropdown('toggle');
+    }
 });

@@ -43,4 +43,18 @@
     <!-- END THEME LAYOUT STYLES -->
 
     <link rel="shortcut icon" href="favicon.ico" /> 
+    <style>
+        .modal-dialog-xl  {
+              width: 100%;
+              height: 100%;
+              margin: 0;
+              padding: 10;
+            }
+
+            .modal-content {
+              height: auto;
+              min-height: 100%;
+              border-radius: 0;
+            }
+    </style>
 </head>
