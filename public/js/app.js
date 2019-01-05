@@ -1104,7 +1104,6 @@ var app = new Vue({
   el: '#app',
   mounted: function mounted() {
     $('.dropdown-toggle').dropdown('toggle');
-    localStorage.setItem("appUrl", "http://localhost/jobhun/public/");
   }
 });
 
