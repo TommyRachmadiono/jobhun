@@ -135,7 +135,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update($request->all());
 
-        $user->photo = $user->usernaem.'.jpg';
+        $user->photo = $user->username.'.jpg';
         $user->save();
 
         $request->file('featured_image')->move(public_path("/images/users/"), $post->username.'.jpg');
@@ -155,9 +155,14 @@ class UserController extends Controller
         return redirect()->route('user_profile', $id)->with('message', 'Berhasil Mengubah Foto Profil');
     }
 
-    public function jsondata()
+    public function jsondata(Request $request)
     {
-        $user = User::paginate(10);
+        if($request->input('search') == ''){
+            $user = User::paginate(1);
+        }
+        else{
+            $user = User::namaMengandung($request->input('search'))->paginate(1);
+        }
 
         return response()->json(['users' => $user]);
     }

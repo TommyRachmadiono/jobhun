@@ -23,7 +23,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END HEAD -->
 
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-content-white">
-        <div id="app" class="page-wrapper">
+        <div id="app" class="page-wrapper" v-cloak>
 
             <!-- BEGIN TOP NAV -->
             @include('templates.partials_admin.top_nav')

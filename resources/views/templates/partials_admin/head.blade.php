@@ -60,5 +60,7 @@
               min-height: 100%;
               border-radius: 0;
             }
+
+            [v-cloak] { display: none; }
     </style>
 </head>

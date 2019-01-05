@@ -23,5 +23,6 @@ const app = new Vue({
     el: '#app',
     mounted(){
 			    $('.dropdown-toggle').dropdown('toggle');
+			    localStorage.setItem("appUrl","http://localhost/jobhun/public/");
     }
 });

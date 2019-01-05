@@ -32,4 +32,8 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Biodata');
     }
+
+    public function scopeNamaMengandung($query,$filter){
+        return $query->where('name','like','%'.$filter.'%');
+    }
 }
