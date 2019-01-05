@@ -27,7 +27,9 @@ Route::get('/logout', 'LoginController@Logout')->name('logout');
 Route::get('test', function() {
     return view('test');
 });
-
+Route::get('profile', function() {
+    return view('admin.user_profile');
+});
 Route::group(['middleware' => ['ceklogin']], function () {
     Route::get('/dashboard_admin', function () {
         return view('admin.index');
@@ -40,6 +42,9 @@ Route::group(['middleware' => ['ceklogin']], function () {
     Route::delete('user_delete/{id}', 'UserController@destroy')->name('user.delete');
     Route::post('/add_user', 'UserController@store')->name('user.store');
     Route::post('/user_update/{id}', 'UserController@update')->name('user.update');
+    Route::get('user/profile/{id}', 'UserController@getProfile')->name('user_profile');
+    Route::patch('/profile_update/{id}', 'UserController@updateProfile')->name('profile.update');
+    Route::patch('/photo_update/{id}', 'UserController@changePhoto')->name('photo.update');
     //============================================= user =============================================//
 
     //============================================= tag =============================================//

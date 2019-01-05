@@ -60,8 +60,8 @@ class UserController extends Controller
         //     'user_id' => $user->id,
         // ]);
 
-        $path = $request->file('photo')->storeAs('images/users',request('username').'.jpg');
-
+        $request->file('photo')->move(public_path("/images/users/"), $user->username.'.jpg');
+        
         return redirect()->route('user_show');
     }
 
@@ -118,6 +118,41 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('user_show');
+    }
+
+    public function getProfile($id)
+    {   
+        if(Auth::user()->id == $id)
+        {
+            $user = User::findOrFail($id);
+            return view('admin.user_profile')->with(['user' => $user]);
+        } 
+        return back();
+    }
+
+    public function updateProfile(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+        $user->photo = $user->usernaem.'.jpg';
+        $user->save();
+
+        $request->file('featured_image')->move(public_path("/images/users/"), $post->username.'.jpg');
+
+        return redirect()->route('user_profile', $id)->with('message', 'Berhasil Mengubah Data');
+    }
+
+    public function changePhoto(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+           
+        $user->photo = $user->username.'.jpg';
+        $user->save();
+
+        $request->file('photo')->move(public_path("/images/users/"), $user->username.'.jpg');
+
+        return redirect()->route('user_profile', $id)->with('message', 'Berhasil Mengubah Foto Profil');
     }
 
     public function jsondata()

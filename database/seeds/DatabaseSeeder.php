@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
             BiodataTableSeeder::class,
     		//PostsTableSeeder::class,
     		//LikesTableSeeder::class,
-    		//TagsTableSeeder::class,
+    		TagsTableSeeder::class,
     		//PostTagTableSeeder::class
     	]);
     }

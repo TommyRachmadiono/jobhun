@@ -22,7 +22,7 @@ License: You must have a valid license purchased only from themeforest(the above
     @include('templates.partials_admin.head')
     <!-- END HEAD -->
 
-    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-content-white">
         <div id="app" class="page-wrapper">
 
             <!-- BEGIN TOP NAV -->
@@ -39,7 +39,6 @@ License: You must have a valid license purchased only from themeforest(the above
                 @include('templates.partials_admin.sidebar_menu')
                 <!-- END SIDEBAR -->
 
-            </div>
                 <!-- END SIDEBAR -->
                 <!-- BEGIN CONTENT -->
                 <div class="page-content-wrapper">
@@ -50,6 +49,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				        @yield('content')
                     </div>
                 </div>
+            </div>
                 <!-- END CONTENT -->
                 <!-- BEGIN QUICK SIDEBAR -->
                 <a href="javascript:;" class="page-quick-sidebar-toggler">
