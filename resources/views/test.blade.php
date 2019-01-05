@@ -33,9 +33,9 @@
 						            <tr>
 						                <th>#</th>
 						                <th>Nama</th>
-						                <th>Username</th>
+						                <th>Nama Pengguna</th>
 						                <th>Email</th>
-						                <th>Action</th>
+						                <th>Aksi</th>
 						            </tr>
 						        </thead>
 						        <tbody>
