@@ -26,7 +26,7 @@
             </div>
             <div class="details">
                 <div class="number">
-                    <span data-counter="counterup" data-value="549">{{ $total_users }}</span>
+                    <span data-counter="counterup" data-value="{{ $total_users }}"></span>
                 </div>
                 <div class="desc"> Jumlah Pengguna </div>
             </div>
