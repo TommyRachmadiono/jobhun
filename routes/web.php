@@ -63,3 +63,4 @@ Route::group(['middleware' => ['ceklogin']], function () {
 });
 
 Route::get('user/jsondata', 'UserController@jsondata');
+Route::post('user/ajaxadd', 'UserController@ajaxstore');

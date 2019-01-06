@@ -25,8 +25,7 @@
                     console.log(response.data.users);
                     this.isLoading = false;
                 }).catch(error => {
-                    //this.$swal(error.response.statusText, "Terdapat kesalahan di server. mohon menghubungi Admin", "error");
-                    this.$swal(error.response.statusText, error.response.data.message, "error");
+                    this.$swal(error.response.statusText, "Terdapat kesalahan di server. mohon menghubungi Admin", "error");
                     this.isLoading = false;
                 });
             },
@@ -38,7 +37,11 @@
 
             addUser: function(){
                 var qs = require('qs');
-                axios.post(localStorage.getItem('appUrl') + 'user/ajaxadd', qs.stringify());
+                axios.post(localStorage.getItem('appUrl') + 'user/ajaxadd', qs.stringify({'userdata': this.userdata})).then(response=>{
+
+                }).catch(error => {
+                    
+                });
             },
 
             changeRole: function(){
