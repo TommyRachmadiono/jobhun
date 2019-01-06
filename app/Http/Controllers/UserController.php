@@ -187,12 +187,11 @@ class UserController extends Controller
     public function jsondata(Request $request)
     {
         if($request->input('search') == ''){
-            $user = User::paginate(1);
+            $user = User::with('biodata')->paginate(1);
         }
         else{
-            $user = User::namaMengandung($request->input('search'))->paginate(1);
-        }        
-
+            $user = User::namaMengandung($request->input('search'))->with('biodata')->paginate(1);
+        }     
         return response()->json(['users' => $user]);
     }
 }

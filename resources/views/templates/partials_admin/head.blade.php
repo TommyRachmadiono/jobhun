@@ -57,7 +57,7 @@
 
             .modal-content {
               height: auto;
-              min-height: 100%;
+              min-height: 90%;
               border-radius: 0;
             }
 
