@@ -215,7 +215,7 @@
         </button>
       </div>
       <div class="modal-body">
-      		<form role="form">
+      		<form role="form" v-on:submit.prevent="addUser">
                     <div class="form-body">
                     	<div class="col-md-12">
 	                        <div class="form-group">
@@ -260,7 +260,8 @@
 	                    </div>
                     </div>
                     <div class="form-actions">
-                        <button class="btn btn-default" v-on:click="addUser">Simpan</button>
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                        <button class="btn btn-default" data-dismiss="modal" >Tutup</button>
                     </div>
                 </form>
       </div>

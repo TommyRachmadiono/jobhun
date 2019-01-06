@@ -22,7 +22,6 @@
                 this.isLoading = true;
                 axios.get(localStorage.getItem('appUrl') + 'user/jsondata?page=' + pg + '&search=' + this.search).then(response=>{
                     this.usersdata = response.data.users;
-                    console.log(response.data.users);
                     this.isLoading = false;
                 }).catch(error => {
                     this.$swal(error.response.statusText, "Terdapat kesalahan di server. mohon menghubungi Admin", "error");
@@ -36,11 +35,20 @@
             },
 
             addUser: function(){
+                this.isLoading = true;
                 var qs = require('qs');
-                axios.post(localStorage.getItem('appUrl') + 'user/ajaxadd', qs.stringify({'userdata': this.userdata})).then(response=>{
-
+                axios.post(localStorage.getItem('appUrl') + 'user/ajaxadd', qs.stringify({'userdata': this.usertambah})).then(response=>{
+                    this.usersdata.data.push(response.data.user);
+                    $("#modal_tambah").modal("hide");$('.modal-backdrop').remove();
+                    this.$swal("Berhasil",response.data.message,"success");
+                    this.usertambah = {
+                        role: 'author'
+                    };
+                    this.isLoading = false;
                 }).catch(error => {
-                    
+                    $("#modal_tambah").modal("hide");$('.modal-backdrop').remove();
+                    this.$swal(error.response.statusText, error.response.data.message, "error");
+                    this.isLoading = false;
                 });
             },
 

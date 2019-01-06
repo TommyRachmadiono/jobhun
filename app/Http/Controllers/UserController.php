@@ -187,11 +187,25 @@ class UserController extends Controller
     public function jsondata(Request $request)
     {
         if($request->input('search') == ''){
-            $user = User::with('biodata')->paginate(1);
+            $user = User::with('biodata')->paginate(2);
         }
         else{
             $user = User::namaMengandung($request->input('search'))->with('biodata')->paginate(1);
         }     
         return response()->json(['users' => $user]);
+    }
+
+    public function ajaxstore(Request $request){
+        $user = new User;
+        $validating = $request->validate($user->createRules);
+        $user->password = bcrypt('12345');
+        $user->role = 'author';
+        $user->photo = $request->input('userdata.username').".jpg";
+        $user->fill($request->input('userdata'));
+        $user->save();
+        $biodata = new Biodata;
+        $user->biodata()->save($biodata);
+
+        return response()->json(['message'=>"Berhasil menambah pengguna", 'user'=>$user]);
     }
 }

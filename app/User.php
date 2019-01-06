@@ -16,7 +16,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'name', 'email', 'photo', 'role'
+        'username', 'name', 'email', 'photo'
+    ];
+
+    public $createRules = [
+        "userdata.name" => "required|string|max:191",
+        "userdata.username" => "required|string|max:191|unique:users,username",
+        "userdata.email" => "required|email|max:191|unique:users,email",
     ];
 
     /**
