@@ -4,8 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Tag extends Model
 {
+    public $rules = [
+        'tag' => 'required',
+    ];
+
     protected $fillable = [
         'tag',
     ];
@@ -14,4 +19,5 @@ class Tag extends Model
     {
         return $this->belongsToMany('App\Post');
     }
+
 }

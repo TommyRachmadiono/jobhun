@@ -1,6 +1,17 @@
 @extends('templates.masteradmin')
 @section('content')
 <div class="row">
+    
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <div class="col-md-12">
         <!-- BEGIN SAMPLE FORM PORTLET-->
         <div class="portlet light bordered">
@@ -20,7 +31,7 @@
                                 <span class="input-group-addon input-circle-left">
                                     <i class="fa fa-tag"></i>
                                 </span>
-                                <input type="text" class="form-control input-circle-right" id="tag" placeholder="Tag" name="tag" required="">
+                                <input type="text" class="form-control input-circle-right" id="tag" placeholder="Tag" name="tag" >
                             </div>
                         </div>
 

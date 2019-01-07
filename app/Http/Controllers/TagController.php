@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\TagRequest;
 use App\Tag;
+
 
 class TagController extends Controller
 {
@@ -35,12 +37,11 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TagRequest $request)
     {
-        $tag = Tag::create($request->all());
-        $tag->save();
-
-        return redirect()->route('tag_show');
+        $validated = $request->validated();
+        // if ($validated)
+            return redirect()->route('tag_show');
     }
 
     /**
