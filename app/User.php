@@ -34,7 +34,7 @@ class User extends Authenticatable
         'password', 'remember_token', 
     ];
 
-    public function Biodata() 
+    public function biodata() 
     {
         return $this->hasOne('App\Biodata');
     }
