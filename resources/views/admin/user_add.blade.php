@@ -1,6 +1,17 @@
 @extends('templates.masteradmin')
 @section('content')
 <div class="row">
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <div class="col-md-12">
         <!-- BEGIN SAMPLE FORM PORTLET-->
         <div class="portlet light bordered">
@@ -20,7 +31,7 @@
                                 <span class="input-group-addon input-circle-left">
                                     <i class="fa fa-user"></i>
                                 </span>
-                                <input type="text" class="form-control input-circle-right" id="username" placeholder="Username" name="username" required="">
+                                <input type="text" class="form-control input-circle-right" id="username" placeholder="Username" name="username" >
                             </div>
                         </div>
 
@@ -30,7 +41,7 @@
                                 <span class="input-group-addon input-circle-left">
                                     <i class="fa fa-arrow-right"></i>
                                 </span>
-                                <input type="text" class="form-control input-circle-right" id="name" placeholder="Name" name="name" required="">
+                                <input type="text" class="form-control input-circle-right" id="name" placeholder="Name" name="name" >
                             </div>
                         </div>
 
@@ -40,7 +51,7 @@
                                 <span class="input-group-addon input-circle-left">
                                     <i class="fa fa-envelope"></i>
                                 </span>
-                                <input type="email" class="form-control input-circle-right" id="email" placeholder="Email Address" name="email" required="">
+                                <input type="email" class="form-control input-circle-right" id="email" placeholder="Email Address" name="email" >
                             </div>
                         </div>
 
@@ -50,13 +61,13 @@
                                 <span class="input-group-addon input-circle-left">
                                     <i class="fa fa-lock"></i>
                                 </span>
-                                <input type="password" class="form-control input-circle-right" id="password" placeholder="Password" name="password" required="">
+                                <input type="password" class="form-control input-circle-right" id="password" placeholder="Password" name="password">
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="role" class="control-label">Role</label>
-                            <select class="form-control" name="role" id="role" required="">
+                            <select class="form-control" name="role" id="role">
                                 <option value="">-- Select Role --</option>
                                 <option value="administrator">Administrator</option>
                                 <option value="author">Author</option>
@@ -65,7 +76,7 @@
 
                         <div class="form-group">
                             <label for="gender" class="control-label">Gender</label>
-                            <select class="form-control" name="gender" id="gender" required="">
+                            <select class="form-control" name="gender" id="gender">
                                 <option value="">-- Select Gender --</option>
                                 <option value="Laki-Laki">Laki-Laki</option>
                                 <option value="Perempuan">Perempuan</option>
@@ -78,7 +89,7 @@
                                 <span class="input-group-addon input-circle-left">
                                     <i class="fa fa-phone"></i>
                                 </span>
-                                <input type="text" class="form-control input-circle-right" id="phone" placeholder="08xxxxx" name="phone" required="">
+                                <input type="text" class="form-control input-circle-right" id="phone" placeholder="08xxxxx" name="phone" >
                             </div>
                         </div>
 
@@ -98,7 +109,7 @@
                                 <span class="input-group-addon input-circle-left">
                                     <i class="fa fa-calendar"></i>
                                 </span>
-                                <input type="date" class="form-control input-circle-right" id="date_of_birth" name="date_of_birth" required="">
+                                <input type="date" class="form-control input-circle-right" id="date_of_birth" name="date_of_birth" >
                             </div>
                         </div>
 
@@ -108,13 +119,13 @@
                                 <span class="input-group-addon input-circle-left">
                                     <i class="fa fa-map-pin"></i>
                                 </span>
-                                <input type="text" class="form-control input-circle-right" id="place_of_birth" placeholder="Somewhere on earth" name="place_of_birth" required="">
+                                <input type="text" class="form-control input-circle-right" id="place_of_birth" placeholder="Somewhere on earth" name="place_of_birth" >
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="photo" class="control-label">Select Photo</label>
-                            <input type="file" id="photo" name="photo" class="form-control" required="">
+                            <input type="file" id="photo" name="photo" class="form-control" >
                             <p class="help-block"> Select a photo (<b>max xx MB</b>) </p>
                         </div>
                     </div>

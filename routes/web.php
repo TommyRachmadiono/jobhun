@@ -20,6 +20,8 @@ Route::get('/login', function () {
 })->name('login');
 Route::post('/login', 'LoginController@CekLogin')->name('loginCek');
 Route::get('/logout', 'LoginController@Logout')->name('logout');
+Route::post('register', 'LoginController@register')->name('register');
+Route::get('refresh_captcha', 'LoginController@refreshCaptcha')->name('refresh.captcha');
 
 Route::get('test', function() {
     return view('test');
@@ -27,6 +29,8 @@ Route::get('test', function() {
 Route::get('profile', function() {
     return view('admin.user_profile');
 });
+
+
 Route::group(['middleware' => ['ceklogin']], function () {
     Route::get('/dashboard_admin', 'UserController@countUser')->name('home');
     //============================================= user =============================================//

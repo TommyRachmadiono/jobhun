@@ -1,6 +1,17 @@
 @extends('templates.masteradmin')
 @section('content')
 <div class="row">
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <div class="col-md-12">
         <!-- BEGIN SAMPLE FORM PORTLET-->
         <div class="portlet light bordered">
@@ -23,7 +34,7 @@
                                 <span class="input-group-addon input-circle-left">
                                     <i class="fa fa-arrow-right"></i>
                                 </span>
-                                <input type="text" class="form-control input-circle-right" id="title" placeholder="Title" name="title" required="" value="@isset($post) {{ $post->title }} @endisset" >
+                                <input type="text" class="form-control input-circle-right" id="title" placeholder="Title" name="title" value="@isset($post) {{ $post->title }} @endisset" >
                             </div>
                         </div>
 
@@ -46,7 +57,7 @@
                                 <span class="input-group-addon input-circle-left">
                                     <i class="fa fa-image"></i>
                                 </span>
-                                <input type="file" class="form-control input-circle-right" id="featured_image" name="featured_image" required="">
+                                <input type="file" class="form-control input-circle-right" id="featured_image" name="featured_image" >
                             </div>
                         </div>
                         <div class="form-group">

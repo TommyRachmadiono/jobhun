@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -33,4 +34,28 @@ class LoginController extends Controller
         Auth::logout();
         return redirect()->route('login');
     }
+
+    public function register()
+    {
+        request()->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:8|confirmed',
+            'captcha' => 'required|captcha'
+        ],
+        ['captcha.captcha' => 'Kode captcha salah']);
+
+
+        $user = new User;
+        $user->fill($request->all());
+        $user->role = 'author';
+        $user->password = bcrypt($request->password);
+        $user->status = 'unverified';
+        $user->save();
+       
+    }
+
+    public function refreshCaptcha(){
+        return response()->json(['captcha'=>captcha_img()]);
+    }
+
 }

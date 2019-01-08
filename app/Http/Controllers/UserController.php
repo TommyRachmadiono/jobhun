@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserRequest;
 use App\User;
 use App\Biodata;
 
@@ -37,7 +38,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $user = User::create($request->all());
         $user->password = bcrypt($request->password);
@@ -183,6 +184,7 @@ class UserController extends Controller
         $total_users = count($users);
         return view('admin.index')->with(['total_users' => $total_users]);
     }
+
 
     public function jsondata(Request $request)
     {
