@@ -69,7 +69,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
 
                   @if (isset($message))
-    <div class="alert alert-success">
+    <div class="alert alert-warning">
     {{ $message }}
     </div>
     @endif
@@ -124,7 +124,7 @@ License: You must have a valid license purchased only from themeforest(the above
             </form>
             <!-- END FORGOT PASSWORD FORM -->
             <!-- BEGIN REGISTRATION FORM -->
-            <form id="form-register" class="register-form">
+            <form id="form-register" class="register-form" action="{{ route('register') }}" method="POST">
                 {{ csrf_field() }}
                 <h3 class="font-green">Sign Up</h3>
                   @if ($errors->any())
@@ -221,7 +221,7 @@ License: You must have a valid license purchased only from themeforest(the above
         });
     </script>
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $("#form-register").submit(function(e) {
             var form = $(this);
             var url = {{ route('register') }};
@@ -244,7 +244,7 @@ License: You must have a valid license purchased only from themeforest(the above
             });
             e.preventDefault();
         });
-    </script>
+    </script> --}}
 </body>
 
 </html>

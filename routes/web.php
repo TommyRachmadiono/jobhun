@@ -21,6 +21,7 @@ Route::get('/login', function () {
 Route::post('/login', 'LoginController@CekLogin')->name('loginCek');
 Route::get('/logout', 'LoginController@Logout')->name('logout');
 Route::post('register', 'LoginController@register')->name('register');
+Route::get('register/{tkn}', 'LoginController@registerCek')->name('register.cek');
 Route::get('refresh_captcha', 'LoginController@refreshCaptcha')->name('refresh.captcha');
 
 Route::get('test', function() {

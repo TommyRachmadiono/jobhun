@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
+use App\Token;
+Use Mail;
 
 class LoginController extends Controller
 {
+    private $email = '';
+    private $username = '';
     public function CekLogin(Request $request) 
     {
         $data = [
@@ -35,23 +39,54 @@ class LoginController extends Controller
         return redirect()->route('login');
     }
 
-    public function register()
+    public function register(Request $request)
     {
         request()->validate([
             'email' => 'required|email',
-            'password' => 'required|min:8|confirmed',
-            'captcha' => 'required|captcha'
+            'password' => 'required|min:5|confirmed'
         ],
         ['captcha.captcha' => 'Kode captcha salah']);
 
 
         $user = new User;
         $user->fill($request->all());
-        $user->role = 'author';
+        $user->role = 'administrator';
         $user->password = bcrypt($request->password);
         $user->status = 'unverified';
         $user->save();
-       
+        $this->email = $user->email;
+        $this->username = $user->username;
+
+        $token = new Token;
+        $token->token = md5($user->email.'RahasiaRegister');
+        $token->user_id = $user->id;
+        $token->save();
+
+        $data = array('name' => $user->username , 'body' => '<p>untuk verifikasi silahkan klik link berikut</p><p><a href="http://localhost/jobhun/public/register/' . $token->token .'">link registrasi</a></p>');
+
+        Mail::send('email.mail', $data, function ($message) {
+            $message->to($this->email, $this->username)->subject('Verifikasi Register');
+            $message->from('jobhun.id@gmail.com', 'Jobhun');
+        });
+
+        return view('login')->with('message','Silahkan cek email anda untuk verifikasi');
+        // return redirect()->route('home');
+    }
+
+
+    public function registerCek($tkn)
+    {
+        $token = Token::where('token', '=', $tkn)->first();
+        if ($token)
+        {
+            $user = User::findOrFail($token->user_id);
+            $user->status = 'verified';
+            $user->save();
+
+            return view('login')->with('message', 'Berhasil Register Silahkan Login');
+        }
+        return view('login')->with('message', 'Silahkan daftar kembali. Verifikasi gagal.');
+        
     }
 
     public function refreshCaptcha(){
