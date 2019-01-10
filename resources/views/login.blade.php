@@ -105,14 +105,14 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div> --}}
                 <div class="create-account">
                     <p>
-                        <a href="javascript:;" id="register-btn" class="uppercase">Create an account</a>
+                        <a href="javascript:;" id="register-btn" class="uppercase">Buat Akun Baru</a>
                     </p>
                 </div>
             </form>
             <!-- END LOGIN FORM -->
 
             <!-- BEGIN FORGOT PASSWORD FORM -->
-            <form class="forget-form" action="index.html" method="post">
+            <form class="forget-form" action="#" method="post">
                 <h3 class="font-green">Forget Password ?</h3>
                 <p> Enter your e-mail address below to reset your password. </p>
                 <div class="form-group">
@@ -126,7 +126,9 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN REGISTRATION FORM -->
             <form id="form-register" class="register-form" action="{{ route('register') }}" method="POST">
                 {{ csrf_field() }}
-                <h3 class="font-green">Sign Up</h3>
+
+                <h3 class="font-green">Sign Up @if(isset($mode)) {{ $mode }} @endif</h3>
+
                   @if ($errors->any())
                 
     <div class="alert alert-danger">
@@ -138,19 +140,19 @@ License: You must have a valid license purchased only from themeforest(the above
     </div>
     @endif
                 
-                <p class="hint"> Enter your account details below: </p>
+                <p class="hint"> Isikan detail akun anda: </p>
                 <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">Username</label>
                     <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" /> </div>
                 <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Password</label>
-                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password" /> </div>
+                    <label class="control-label visible-ie8 visible-ie9">Kata Sandi</label>
+                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Kata sandi" name="password" /> </div>
                 <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
-                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="password_confirmation" /> </div>
+                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="password_confirmation" placeholder="Ketik ulang kata sandi anda" name="password_confirmation" /> </div>
                 <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">Email</label>
-                    <input class="form-control placeholder-no-fix" type="email" autocomplete="off" placeholder="Enter your email here" name="email" /> </div>
+                    <input class="form-control placeholder-no-fix" type="email" autocomplete="off" placeholder="Masukkan email anda" name="email" /> </div>
                 <div class="form-group">
                     <div class="row">
                         <span class="col-md-4 cptc-img">
@@ -163,7 +165,7 @@ License: You must have a valid license purchased only from themeforest(the above
             </div>
                 <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">Masukkan kode di atas</label>
-                    <input class="form-control placeholder-no-fix" type="text" id="captcha" autocomplete="off" placeholder="Enter your kode here" name="captcha" /> </div>
+                    <input class="form-control placeholder-no-fix" type="text" id="captcha" autocomplete="off" placeholder="Masukkan kode captcha diatas" name="captcha" /> </div>
                 {{-- <div class="form-group margin-top-20 margin-bottom-20">
                     <label class="mt-checkbox mt-checkbox-outline">
                         <input type="checkbox" name="tnc" /> I agree to the
@@ -174,7 +176,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div id="register_tnc_error"> </div>
                 </div> --}}
                 <div class="form-actions">
-                    <button type="button" id="register-back-btn" class="btn green btn-outline">Back</button>
+                    <button type="button" id="register-back-btn" class="btn green btn-outline">Kembali</button>
                     <input type="submit" id="daftar" class="btn btn-success uppercase pull-right" value="Daftar">
                 </div>
             </form>
@@ -219,6 +221,10 @@ License: You must have a valid license purchased only from themeforest(the above
                 }
             });
         });
+    </script>
+
+    <script type="text/javascript">
+  
     </script>
 
     {{-- <script type="text/javascript">

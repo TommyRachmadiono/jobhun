@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 use App\User;
 use App\Token;
 Use Mail;
+use Validator;
 
 class LoginController extends Controller
 {
@@ -41,12 +44,28 @@ class LoginController extends Controller
 
     public function register(Request $request)
     {
-        request()->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:5|confirmed'
-        ],
-        ['captcha.captcha' => 'Kode captcha salah']);
+        // $validator = request()->validate([
+        //     'email' => 'required|email',
+        //     'password' => 'required|min:5|confirmed',
+        //     'captcha' => 'required|captcha',
+        // ],
+        // ['captcha.captcha' => 'Kode captcha salah']);
 
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required|min:5|confirmed',
+            'captcha' => 'required|captcha',
+        ]);
+
+        if ($validator->fails()) {
+            // return redirect()->to(app('url')->previous(). '#register-btn');
+            return Redirect::to(URL::previous() . "#form-register")->withErrors($validator);
+            // return redirect(url()->current() . "#anchor");
+            // return redirect()->back()->withErrors($validator)->withInput()->with('mode', 'register');
+            // return redirect('login')
+            // ->withErrors($validator)
+            // ->withInput();
+        }
 
         $user = new User;
         $user->fill($request->all());
