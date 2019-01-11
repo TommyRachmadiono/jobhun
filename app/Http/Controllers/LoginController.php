@@ -44,13 +44,6 @@ class LoginController extends Controller
 
     public function register(Request $request)
     {
-        // $validator = request()->validate([
-        //     'email' => 'required|email',
-        //     'password' => 'required|min:5|confirmed',
-        //     'captcha' => 'required|captcha',
-        // ],
-        // ['captcha.captcha' => 'Kode captcha salah']);
-
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required|min:5|confirmed',
@@ -58,13 +51,8 @@ class LoginController extends Controller
         ]);
 
         if ($validator->fails()) {
-            // return redirect()->to(app('url')->previous(). '#register-btn');
-            return Redirect::to(URL::previous() . "#form-register")->withErrors($validator);
-            // return redirect(url()->current() . "#anchor");
-            // return redirect()->back()->withErrors($validator)->withInput()->with('mode', 'register');
-            // return redirect('login')
-            // ->withErrors($validator)
-            // ->withInput();
+            session(['mode' => 'regis']);
+            return redirect()->back()->withErrors($validator);
         }
 
         $user = new User;
@@ -89,7 +77,6 @@ class LoginController extends Controller
         });
 
         return view('login')->with('message','Silahkan cek email anda untuk verifikasi');
-        // return redirect()->route('home');
     }
 
 
@@ -112,4 +99,7 @@ class LoginController extends Controller
         return response()->json(['captcha'=>captcha_img()]);
     }
 
+    public function destroySession(Request $request, $ses){
+        $request->session()->forget($ses);
+    }
 }

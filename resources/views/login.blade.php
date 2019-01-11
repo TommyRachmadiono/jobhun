@@ -127,7 +127,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <form id="form-register" class="register-form" action="{{ route('register') }}" method="POST">
                 {{ csrf_field() }}
 
-                <h3 class="font-green">Sign Up @if(isset($mode)) {{ $mode }} @endif</h3>
+                <h3 class="font-green">Sign Up</h3>
 
                   @if ($errors->any())
                 
@@ -212,7 +212,6 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <script type="text/javascript">
         $(".cptc-btn").click(function(){
-            // alert('clicked');
             $.ajax({
                 type: 'GET',
                 url: '{{ route('refresh.captcha') }}',
@@ -224,33 +223,23 @@ License: You must have a valid license purchased only from themeforest(the above
     </script>
 
     <script type="text/javascript">
-  
-    </script>
+        $( document ).ready(function() {
+            var mode = "{{ session('mode') }}";
+            if(mode == "regis"){
+                $( "#register-btn" ).trigger( "click" );
+            }
 
-    {{-- <script type="text/javascript">
-        $("#form-register").submit(function(e) {
-            var form = $(this);
-            var url = {{ route('register') }};
-
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "POST",
-                url: url,
-                data: form.serialize(),
-                success: function(data)
-                {
-                    alert('berhasil register');
-                },
-                error: function(jqXHR) 
-                {
-                    console.log(jqXHR);
-                }
+            $('#register-back-btn').click(function(){
+                alert("kembali ke login");
+                $.ajax({
+                    type: 'GET',
+                    url: "{{ env('APP_URL').'/destroy_session/mode' }}",
+                    success:function(){
+                    }
+                });                
             });
-            e.preventDefault();
         });
-    </script> --}}
+    </script>
 </body>
 
 </html>
