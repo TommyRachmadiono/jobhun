@@ -25,6 +25,8 @@ Route::post('register', 'LoginController@register')->name('register');
 Route::get('register/{tkn}', 'LoginController@registerCek')->name('register.cek');
 Route::get('destroy_session/{ses}', 'LoginController@destroySession')->name('destroy_session');
 Route::get('refresh_captcha', 'LoginController@refreshCaptcha')->name('refresh.captcha');
+Route::post('forgot_password', 'LoginController@lupaPassword')->name('forgot_password');
+
 
 Route::get('/download', function() {
     return Excel::download(new UsersExport, 'users.xls');

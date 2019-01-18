@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use App\User;
 use App\Token;
+use DB;
 Use Mail;
 use Validator;
 
@@ -15,6 +16,7 @@ class LoginController extends Controller
 {
     private $email = '';
     private $username = '';
+
     public function CekLogin(Request $request) 
     {
         $data = [
@@ -79,6 +81,30 @@ class LoginController extends Controller
         return view('login')->with('message','Silahkan cek email anda untuk verifikasi');
     }
 
+    public function lupaPassword(Request $request)
+    {
+        $email = $request->email;
+        $user = DB::table('users')->where('email', '=', $email)->first();
+        if($user)
+        {
+            $this->email = $user->email;
+            $this->username = $user->username;
+            $newPass = str_random(10);
+            $token = DB::table('tokens')->where('user_id', '=', $user->id)->first();
+
+            $data = array('name' => $user->username , 'body' => '<p>Password baru anda adalah : '. $newPass .'<br>
+                Klik link berikut untuk verifikasi password baru anda</p><p><a href="http://localhost/jobhun/public/password/forgot' . $token->token .'">Link ubah password</a></p>');
+
+            Mail::send('email.mail', $data, function ($message) {
+                $message->to($this->email, $this->username)->subject('Lupa Password');
+                $message->from('jobhun.id@gmail.com', 'Jobhun');
+            });
+
+            return view('login')->with('message','Silahkan cek email anda untuk verifikasi password baru anda.');
+        }
+
+        return back()->with('message', 'Email salah, silahkan masukkan lagi.');
+    }
 
     public function registerCek($tkn)
     {

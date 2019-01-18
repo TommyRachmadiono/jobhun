@@ -112,14 +112,16 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- END LOGIN FORM -->
 
             <!-- BEGIN FORGOT PASSWORD FORM -->
-            <form class="forget-form" action="#" method="post">
-                <h3 class="font-green">Forget Password ?</h3>
-                <p> Enter your e-mail address below to reset your password. </p>
+            <form class="forget-form" action="{{ route('forgot_password') }}" method="POST">
+                {{ csrf_field() }}
+                <h3 class="font-green">Lupa Kata Sandi ?</h3>
+                <p> Masukkan e-mail anda untuk mendapatkan kata sandi baru. </p>
                 <div class="form-group">
-                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
+                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" required="" > 
+                </div>
                 <div class="form-actions">
-                    <button type="button" id="back-btn" class="btn green btn-outline">Back</button>
-                    <button type="submit" class="btn btn-success uppercase pull-right">Submit</button>
+                    <button type="button" id="back-btn" class="btn green btn-outline">Kembali</button>
+                    <input type="submit" class="btn btn-success uppercase pull-right" value="Kirim">
                 </div>
             </form>
             <!-- END FORGOT PASSWORD FORM -->
