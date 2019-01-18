@@ -45,6 +45,7 @@ class PostController extends Controller
         $post = Post::create($request->all());
 
         $post->featured_image = $post->id.'.jpg';
+        $post->url = $this->generatePostUrl($post->title);
         $post->save();
         $request->file('featured_image')->move(public_path("/images/post/"), $post->id.'.jpg');
 
@@ -110,5 +111,12 @@ class PostController extends Controller
     {
         //
         
+    }
+
+    private function generatePostUrl($url){
+        $url = trim($url);
+        $url = str_replace(" ", "-", $url);
+        $url = strtolower($url);
+        return $url;
     }
 }

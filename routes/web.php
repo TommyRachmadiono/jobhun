@@ -13,12 +13,10 @@ use App\Exports\UsersExport;
 */
 
 Route::get('/', function () {
-    return view('templates.masteradmin');
+    return redirect()->route('login');
 });
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('/login', 'LoginController@index')->name('login');
 Route::post('/login', 'LoginController@CekLogin')->name('loginCek');
 Route::get('/logout', 'LoginController@Logout')->name('logout');
 Route::post('register', 'LoginController@register')->name('register');

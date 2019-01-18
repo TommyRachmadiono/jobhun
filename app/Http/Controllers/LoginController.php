@@ -17,6 +17,13 @@ class LoginController extends Controller
     private $email = '';
     private $username = '';
 
+    public function index(){
+        if(Auth::check())
+            return redirect()->route('home');
+        else
+            return view('login');
+    }
+
     public function CekLogin(Request $request) 
     {
         $data = [
