@@ -13,8 +13,15 @@ use App\Exports\UsersExport;
 */
 
 Route::get('/', function () {
-    return redirect()->route('login');
-});
+    return view('user.index');
+})->name('user_home');
+
+Route::get('blog/all/{tag?}', 'BlogController@index')->name('all_blog');
+
+Route::get('blog/{url}', 'BlogController@detailBlog')->name('detail_blog');
+Route::get('/about-us', function () {
+    return view('user.about_us');
+})->name('about_us');
 
 Route::get('/login', 'LoginController@index')->name('login');
 Route::post('/login', 'LoginController@CekLogin')->name('loginCek');
@@ -24,7 +31,10 @@ Route::get('register/{tkn}', 'LoginController@registerCek')->name('register.cek'
 Route::get('destroy_session/{ses}', 'LoginController@destroySession')->name('destroy_session');
 Route::get('refresh_captcha', 'LoginController@refreshCaptcha')->name('refresh.captcha');
 Route::post('forgot_password', 'LoginController@lupaPassword')->name('forgot_password');
+// Route::get('password/forgot/{tkn}', 'LoginController@lupaPasswordCek')->name('forgot_pass.cek');
+Route::get('password/forgot/{tkn}', 'LoginController@kirimPasswordBaru')->name('send_password');
 
+Route::post('subscribe', 'SubscriptionController@subscribe')->name('subscribe');
 
 Route::get('/download', function() {
     return Excel::download(new UsersExport, 'users.xls');

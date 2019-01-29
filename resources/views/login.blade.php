@@ -48,43 +48,43 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN THEME LAYOUT STYLES -->
     <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="favicon.ico" /> </head>
-<!-- END HEAD -->
+    <!-- END HEAD -->
 
-<body class=" login">
+    <body class=" login">
         <!-- BEGIN LOGO -->
         <div class="logo">
             <a href=" {{ url('/') }}">
                 <img src="{{ asset('logo.png') }}" height="100" alt="" /> </a>
-        </div>
-        <!-- END LOGO -->
-        <!-- BEGIN LOGIN -->
-        <div class="content">
-            <!-- BEGIN LOGIN FORM -->
-            <form class="login-form" action="{{ route('loginCek') }}" method="post">
-                {{ csrf_field() }}
-                <h3 class="form-title font-green">Masuk</h3>
-                <div class="alert alert-danger display-hide">
-                    <button class="close" data-close="alert"></button>
-                    <span> Masukkan email / kata kunci. </span>
-                </div>
+            </div>
+            <!-- END LOGO -->
+            <!-- BEGIN LOGIN -->
+            <div class="content">
+                <!-- BEGIN LOGIN FORM -->
+                <form class="login-form" action="{{ route('loginCek') }}" method="post">
+                    {{ csrf_field() }}
+                    <h3 class="form-title font-green">Masuk</h3>
+                    <div class="alert alert-danger display-hide">
+                        <button class="close" data-close="alert"></button>
+                        <span> Masukkan email / kata kunci. </span>
+                    </div>
 
-                  @if (isset($message))
-    <div class="alert alert-warning">
-    {{ $message }}
-    </div>
-    @endif
-                <div class="form-group">
-                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                    @if (isset($message))
+                    <div class="alert alert-warning">
+                        {{ $message }}
+                    </div>
+                    @endif
+                    <div class="form-group">
+                        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 
-                    <label class="control-label visible-ie8 visible-ie9">Email / Nama Pengguna</label>
-                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Email / Nama Pengguna" name="email" /> </div>
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Kata Kunci</label>
-                    <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Kata Kunci" name="password" /> </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn green uppercase">Masuk</button>
-                    <a href="javascript:;" id="forget-password" class="forget-password">Lupa Kata Kunci?</a>
-                </div>
+                        <label class="control-label visible-ie8 visible-ie9">Email / Nama Pengguna</label>
+                        <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Email / Nama Pengguna" name="email" /> </div>
+                        <div class="form-group">
+                            <label class="control-label visible-ie8 visible-ie9">Kata Kunci</label>
+                            <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Kata Kunci" name="password" /> </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn green uppercase">Masuk</button>
+                                <a href="javascript:;" id="forget-password" class="forget-password">Lupa Kata Sandi?</a>
+                            </div>
 
                 {{-- <div class="login-options">
                     <h4>Or login with</h4>
@@ -114,10 +114,14 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN FORGOT PASSWORD FORM -->
             <form class="forget-form" action="{{ route('forgot_password') }}" method="POST">
                 {{ csrf_field() }}
+                @if (Session::has('message'))
+                <div class="alert alert-danger">{{ Session::get('message') }}</div>
+                @endif
                 <h3 class="font-green">Lupa Kata Sandi ?</h3>
                 <p> Masukkan e-mail anda untuk mendapatkan kata sandi baru. </p>
+
                 <div class="form-group">
-                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" required="" > 
+                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" required=""> 
                 </div>
                 <div class="form-actions">
                     <button type="button" id="back-btn" class="btn green btn-outline">Kembali</button>
@@ -131,43 +135,43 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 <h3 class="font-green">Sign Up</h3>
 
-                  @if ($errors->any())
+                @if ($errors->any())
                 
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li id="error">{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li id="error">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 
                 <p class="hint"> Isikan detail akun anda: </p>
                 <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">Username</label>
                     <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" /> </div>
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Kata Sandi</label>
-                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Kata sandi" name="password" /> </div>
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
-                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="password_confirmation" placeholder="Ketik ulang kata sandi anda" name="password_confirmation" /> </div>
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Email</label>
-                    <input class="form-control placeholder-no-fix" type="email" autocomplete="off" placeholder="Masukkan email anda" name="email" /> </div>
-                <div class="form-group">
-                    <div class="row">
-                        <span class="col-md-4 cptc-img">
-                    {!! captcha_img() !!}
-                        </span>
-                        <span class="col-md-3">
-                    <a class="btn btn-info cptc-btn" ><i class="fa fa-refresh"></i> Refresh Kode</a>
-                        </span>
-                </div>
-            </div>
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Masukkan kode di atas</label>
-                    <input class="form-control placeholder-no-fix" type="text" id="captcha" autocomplete="off" placeholder="Masukkan kode captcha diatas" name="captcha" /> </div>
+                    <div class="form-group">
+                        <label class="control-label visible-ie8 visible-ie9">Kata Sandi</label>
+                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Kata sandi" name="password" /> </div>
+                        <div class="form-group">
+                            <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
+                            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="password_confirmation" placeholder="Ketik ulang kata sandi anda" name="password_confirmation" /> </div>
+                            <div class="form-group">
+                                <label class="control-label visible-ie8 visible-ie9">Email</label>
+                                <input class="form-control placeholder-no-fix" type="email" autocomplete="off" placeholder="Masukkan email anda" name="email" /> </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <span class="col-md-4 cptc-img">
+                                            {!! captcha_img() !!}
+                                        </span>
+                                        <span class="col-md-3">
+                                            <a class="btn btn-info cptc-btn" ><i class="fa fa-refresh"></i> Refresh Kode</a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label visible-ie8 visible-ie9">Masukkan kode di atas</label>
+                                    <input class="form-control placeholder-no-fix" type="text" id="captcha" autocomplete="off" placeholder="Masukkan kode captcha diatas" name="captcha" /> </div>
                 {{-- <div class="form-group margin-top-20 margin-bottom-20">
                     <label class="mt-checkbox mt-checkbox-outline">
                         <input type="checkbox" name="tnc" /> I agree to the
@@ -190,58 +194,70 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="../assets/global/plugins/excanvas.min.js"></script> 
 <script src="../assets/global/plugins/ie8.fix.min.js"></script> 
 <![endif]-->
-    <!-- BEGIN CORE PLUGINS -->
-    <script src="{{ asset('admin/assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin/assets/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin/assets/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin/assets/global/plugins/jquery.blockui.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}" type="text/javascript"></script>
-    <!-- END CORE PLUGINS -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script src="{{ asset('admin/assets/global/plugins/jquery-validation/js/jquery.validate.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin/assets/global/plugins/jquery-validation/js/additional-methods.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin/assets/global/plugins/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
-    <!-- END PAGE LEVEL PLUGINS -->
-    <!-- BEGIN THEME GLOBAL SCRIPTS -->
-    <script src="{{ asset('admin/assets/global/scripts/app.min.js') }}" type="text/javascript"></script>
-    <!-- END THEME GLOBAL SCRIPTS -->
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    <script src="{{ asset('admin/assets/pages/scripts/login.min.js') }}" type="text/javascript"></script>
-    <!-- END PAGE LEVEL SCRIPTS -->
-    <!-- BEGIN THEME LAYOUT SCRIPTS -->
-    <!-- END THEME LAYOUT SCRIPTS -->
+<!-- BEGIN CORE PLUGINS -->
+<script src="{{ asset('admin/assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/assets/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/assets/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/assets/global/plugins/jquery.blockui.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="{{ asset('admin/assets/global/plugins/jquery-validation/js/jquery.validate.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/assets/global/plugins/jquery-validation/js/additional-methods.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/assets/global/plugins/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script src="{{ asset('admin/assets/global/scripts/app.min.js') }}" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="{{ asset('admin/assets/pages/scripts/login.min.js') }}" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<!-- BEGIN THEME LAYOUT SCRIPTS -->
+<!-- END THEME LAYOUT SCRIPTS -->
 
-    <script type="text/javascript">
-        $(".cptc-btn").click(function(){
+<script type="text/javascript">
+    $(".cptc-btn").click(function(){
+        $.ajax({
+            type: 'GET',
+            url: '{{ route('refresh.captcha') }}',
+            success:function(data){
+                $(".cptc-img").html(data.captcha);
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+        var mode = "{{ session('mode') }}";
+        if(mode == "regis")
+            $( "#register-btn" ).trigger( "click" );
+        else if(mode == "forgot_pass")
+            $( "#forget-password" ).trigger("click");
+        
+        $('#register-back-btn').click(function(){
+            alert("kembali ke login");
             $.ajax({
                 type: 'GET',
-                url: '{{ route('refresh.captcha') }}',
-                success:function(data){
-                    $(".cptc-img").html(data.captcha);
+                url: "{{ env('APP_URL').'/destroy_session/mode' }}",
+                success:function(){
                 }
-            });
+            });                
         });
-    </script>
 
-    <script type="text/javascript">
-        $( document ).ready(function() {
-            var mode = "{{ session('mode') }}";
-            if(mode == "regis"){
-                $( "#register-btn" ).trigger( "click" );
-            }
-
-            $('#register-back-btn').click(function(){
-                alert("kembali ke login");
-                $.ajax({
-                    type: 'GET',
-                    url: "{{ env('APP_URL').'/destroy_session/mode' }}",
-                    success:function(){
-                    }
-                });                
-            });
+        $('#back-btn').click(function(){
+            alert("kembali ke login");
+            $.ajax({
+                type: 'GET',
+                url: "{{ env('APP_URL').'/destroy_session/mode' }}",
+                success:function(){
+                }
+            });                
         });
-    </script>
+        
+    });
+</script>
 </body>
 
 </html>

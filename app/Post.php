@@ -15,4 +15,8 @@ class Post extends Model
         return $this->belongsToMany('App\Tag');
     }
     
+    // public function postTag()
+    // {
+    //     return $this->hasManyThrough('App\Post', 'App\Tag');
+    // }
 }
